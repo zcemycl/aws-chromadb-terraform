@@ -31,7 +31,7 @@ curl 0.0.0.0:8000/api/v1/heartbeat
 docker ps
 docker logs {docker-id}
 ```
-3. Call api via api gateway with api key.
+3. Call api via api gateway with api key in Postman.
     - GET `https://******.execute-api.eu-west-2.amazonaws.com/v1/api/v1/heartbeat`
     - Authorization Type: API Key
     - Key: x-api-key
