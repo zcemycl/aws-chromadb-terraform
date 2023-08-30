@@ -20,13 +20,13 @@ terraform apply -auto-approve
 ```
 
 ## How to debug?
-1. Visit chroma instance through backdoor instance.
-```
+1. Visit chroma instance (architecture 3) through backdoor instance.
+```bash
 ssh -i ssh-chroma.pem ec2-user@{public-backdoor-ip}
 ssh -i ssh-chroma.pem ec2-user@{private-chroma-ip}
 ```
 2. Inside chroma instance, test chroma heartbeat.
-```
+```bash
 curl 0.0.0.0:8000/api/v1/heartbeat
 docker ps
 docker logs {docker-id}
@@ -37,19 +37,21 @@ docker logs {docker-id}
     - Key: x-api-key
     - Value: {api key}
 4. Call api with curl.
-```
+```bash
 curl --location --request GET 'https://*******.execute-api.eu-west-2.amazonaws.com/v1/api/v1/heartbeat' \
 --header 'x-api-key: ****'
 ```
 5. Call api with python requests.
-```
+```python
+import requests
 headers = {"x-api-key": "****"}
-response = requests.get('https://*****.execute-api.eu-west-2.amazonaws.com/v1/api/v1/heartbeat', headers=headers)
+response = requests.get('https://*****.execute-api.eu-west-2.amazonaws.com/v1/api/v1/heartbeat',
+    headers=headers)
 print(response.text)
 ```
 6. Read Cloudwatch logs from API-Gateway-Execution-Logs_xxxxxx.
 7. Python sdk from chroma-core
-```
+```python
 import chromadb
 
 client = chromadb.HttpClient(
