@@ -81,6 +81,6 @@ resource "aws_instance" "chroma_instance" {
   }
 
   tags = {
-    Name = "${var.author}-chroma-compute-sg"
+    Name = "${var.author}-chroma-compute"
   }
 }
