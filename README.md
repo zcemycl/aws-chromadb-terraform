@@ -9,6 +9,8 @@ The repository to deploy chromadb via terraform into aws cloud infrastructure.
 3. (RECOMMENDED) Private ec2 instance with Network Load Balancer and API Gateway [[code]](architectures/apigw-nlb-ec2)
     - From the youtube video [Deploy a PRIVATE Chroma Vector DB to AWS | Step by step tutorial | Part 2](https://www.youtube.com/watch?v=rD3G3hbAawE&t=27s)
 
+![diagram](resources/apigw-nlb-ec2.png)
+
 ## How to deploy?
 ```bash
 cd architectures/apigw-nlb-ec2 # change to another architecture directory
