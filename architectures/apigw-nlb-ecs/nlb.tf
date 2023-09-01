@@ -6,22 +6,19 @@ resource "aws_lb" "lb" {
 }
 
 resource "aws_lb_target_group" "lbtg" {
-  name     = "load-balancer-target-group"
-  port     = 8000
-  protocol = "TCP"
-  vpc_id   = aws_vpc.base_vpc.id
+  name        = "load-balancer-target-group"
+  port        = 8000
+  protocol    = "TCP"
+  vpc_id      = aws_vpc.base_vpc.id
+  target_type = "ip"
 
   health_check {
     enabled  = true
     protocol = "HTTP"
     path     = "/"
+    matcher  = "200,404"
+    # timeout             = "120"
   }
-}
-
-resource "aws_lb_target_group_attachment" "lbtga" {
-  target_group_arn = aws_lb_target_group.lbtg.arn
-  target_id        = aws_instance.chroma_instance.id
-  port             = 8000
 }
 
 resource "aws_lb_listener" "lbl" {
