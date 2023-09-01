@@ -4,7 +4,8 @@
       {
         "Action": [
           "autoscaling:ExecutePolicy",
-          "s3:*"
+          "s3:*",
+          "efs:*"
         ],
         "Effect": "Allow",
         "Resource": "*"
