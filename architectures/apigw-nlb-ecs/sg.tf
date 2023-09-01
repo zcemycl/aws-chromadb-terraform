@@ -66,6 +66,25 @@ resource "aws_ecs_task_definition" "chroma_task_definition" {
   task_role_arn            = aws_iam_role.chroma_ecs_task_role.arn
 
   container_definitions = jsonencode([
-    {}
+    {
+      name        = "chroma-container"
+      image       = "ghcr.io/chroma-core/chroma:0.4.7"
+      essential   = true
+      environment = []
+      portMappings = [
+        {
+          containerPort = 8000
+          hostPort      = 8000
+        }
+      ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = module.loggings.chroma_log_group
+          awslogs-stream-prefix = "chroma"
+          awslogs-region        = var.aws_region
+        }
+      }
+    }
   ])
 }
