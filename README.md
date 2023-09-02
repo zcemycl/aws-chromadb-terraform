@@ -21,7 +21,14 @@ The repository to deploy chromadb via terraform into aws cloud infrastructure.
     - Cloudwatch Logs to store api gateway deployment messages and docker logs.
 
 ## How to deploy?
+```bash
+cd architectures/{architecture-directory}
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
 
+## How to debug?
 1. Remote access to ec2 instance.
     ```bash
     # architecture 1,2
