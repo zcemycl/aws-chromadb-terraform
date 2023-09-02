@@ -1,20 +1,29 @@
 # aws-chromadb-terraform
 The repository to deploy chromadb via terraform into aws cloud infrastructure.
 
+|Architecture 3|Architecture 4|
+|---|---|
+|![diagram](resources/apigw-nlb-ec2.png)|![diagram](resources/apigw-nlb-ecs.png)|
+
 ## Architectures
 1. Vanilla public ec2 instance [[code]](architectures/vanilla-ec2)
-    - From the cloudformation template [here](https://s3.amazonaws.com/public.trychroma.com/cloudformation/latest/chroma.cf.json).
+    - Translated from the cloudformation template [here](https://s3.amazonaws.com/public.trychroma.com/cloudformation/latest/chroma.cf.json) to terraform.
 2. Public ec2 instance with API gateway [[code]](architectures/apigw-public-ec2/)
-    - From the youtube video [How to run a Chroma Vector Database locally and on AWS! | EASY MODE](https://www.youtube.com/watch?v=xRIEKjOosaM)
+    - Modified from the youtube video [How to run a Chroma Vector Database locally and on AWS! | EASY MODE](https://www.youtube.com/watch?v=xRIEKjOosaM)
+    - Additional cloudwatch to view api gateway deployment.
 3. (RECOMMENDED) Private ec2 instance with Network Load Balancer and API Gateway [[code]](architectures/apigw-nlb-ec2)
-    - From the youtube video [Deploy a PRIVATE Chroma Vector DB to AWS | Step by step tutorial | Part 2](https://www.youtube.com/watch?v=rD3G3hbAawE&t=27s)
+    - Modeified from the youtube video [Deploy a PRIVATE Chroma Vector DB to AWS | Step by step tutorial | Part 2](https://www.youtube.com/watch?v=rD3G3hbAawE&t=27s)
+    - Additional cloudwatch to view api gateway deployment.
+    - Additional public ec2 to view docker logs within private ec2.
 4. (RECOMMENDED) Private ecs fargate with Network Load Balancer, EFS and API Gateway [[code]](architectures/apigw-nlb-ecs)
-
-![diagram](resources/apigw-nlb-ec2.png)
+    - Fargate to manage docker containers.
+    - Elastic File System for persistent volume of docker.
+    - Cloudwatch Logs to store api gateway deployment messages and docker logs.
 
 ## How to deploy?
 ```bash
-cd architectures/apigw-nlb-ec2 # change to another architecture directory
+# change to another architecture directory
+cd architectures/apigw-nlb-ecs
 terraform init
 terraform plan
 terraform apply -auto-approve
