@@ -77,7 +77,7 @@ resource "aws_ecs_task_definition" "chroma_task_definition" {
   }
 
   ephemeral_storage {
-    size_in_gib = 24
+    size_in_gib = var.fargate_ephemeral_storage_size
   }
 }
 
