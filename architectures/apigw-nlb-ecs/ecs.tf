@@ -50,13 +50,13 @@ resource "aws_ecs_task_definition" "chroma_task_definition" {
           hostPort      = 8000
         }
       ]
-      # mountPoints = [
-      #   {
-      #     containerPath: "/index_data"
-      #     sourceVolume: "index_data"
-      #     readOnly: false
-      #   }
-      # ]
+      mountPoints = [
+        {
+          containerPath : "/index_data"
+          sourceVolume : aws_efs_file_system.chroma_efs.creation_token
+          readOnly : false
+        }
+      ]
       logConfiguration = {
         logDriver = "awslogs"
         options = {
@@ -68,13 +68,17 @@ resource "aws_ecs_task_definition" "chroma_task_definition" {
     }
   ])
 
-  # volume {
-  #   name = "index_data"
-  #   efs_volume_configuration {
-  #     file_system_id = aws_efs_file_system.chroma_efs.id
-  #     root_directory = "/"
-  #   }
-  # }
+  volume {
+    name = aws_efs_file_system.chroma_efs.creation_token
+    efs_volume_configuration {
+      file_system_id = aws_efs_file_system.chroma_efs.id
+      root_directory = "/"
+    }
+  }
+
+  ephemeral_storage {
+    size_in_gib = 24
+  }
 }
 
 resource "aws_ecs_service" "chroma_ecs_service" {

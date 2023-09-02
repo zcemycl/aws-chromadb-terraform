@@ -5,7 +5,7 @@
         "Action": [
           "autoscaling:ExecutePolicy",
           "s3:*",
-          "efs:*"
+          "elasticfilesystem:*"
         ],
         "Effect": "Allow",
         "Resource": "*"

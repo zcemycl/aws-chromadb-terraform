@@ -1,11 +1,14 @@
 import chromadb
 
+hostname = "dlifw0fefe.execute-api.eu-west-2.amazonaws.com/dev"
+apikey = "YmOjJyAdHf67hOKNM00ulaWWK4Aa5xrS5kBWtE6I"
+
 client = chromadb.HttpClient(
-    host="32wqkngjq3.execute-api.eu-west-2.amazonaws.com/dev",
+    host=hostname,
     ssl=True,
     port="",
     headers={
-        "X-Api-Key": "mK871Nnkn29iWCVjmVjwt7LR3frt8k7tGBPaGUHc"
+        "X-Api-Key": apikey
     }
 )
 print("Heartbeat: ", client.heartbeat())

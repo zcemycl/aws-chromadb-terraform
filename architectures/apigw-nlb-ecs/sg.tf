@@ -11,6 +11,12 @@ module "security_groups" {
           from_port   = 8000
           to_port     = 8000
           cidr_blocks = [aws_vpc.base_vpc.cidr_block]
+        },
+        {
+          protocol    = "tcp"
+          from_port   = 2049
+          to_port     = 2049
+          cidr_blocks = ["0.0.0.0/0"]
         }
       ]
       egress_rules = [
