@@ -86,11 +86,9 @@ terraform apply -auto-approve
     # ------
 
     client = chromadb.HttpClient(
-        host=hostname, # don't include https
+        host=hostname, # don't include http or https
         ssl=ssl, port=port,
-        headers={
-            "X-Api-Key": "xxxxx"
-        }
+        headers=headers
     )
     print("Heartbeat: ", client.heartbeat())
     print("List collections: ", client.list_collections())
