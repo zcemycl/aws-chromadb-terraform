@@ -1,5 +1,5 @@
 # aws-chromadb-terraform
-The repository to deploy chromadb via terraform into aws cloud infrastructure, using API Gateway, NLB, EFS and Fargate.
+The repository to deploy chromadb via terraform into aws cloud infrastructure, using API Gateway, Cloud Map, Service Discovery, NLB, EFS, ECS Fargate and VPN.
 
 |Architecture 3|Architecture 4|
 |---|---|
