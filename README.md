@@ -4,6 +4,8 @@ The repository to deploy chromadb via terraform into aws cloud infrastructure, u
 |Architecture 3|Architecture 4|
 |---|---|
 |![diagram](resources/apigw-nlb-ec2.png)|![diagram](resources/apigw-nlb-ecs.png)|
+|Architecture 5||
+|![diagram](resources/cloudmap-vpn-ecs.png)||
 
 ## Architectures
 1. Vanilla public ec2 instance [[code]](architectures/vanilla-ec2)
