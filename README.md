@@ -24,6 +24,7 @@ The repository to deploy chromadb via terraform into aws cloud infrastructure, u
 5. (RECOMMENDED) Private ecs fargate with EFS, Cloud Map and VPN Endpoint. [[code]](architectures/cloudmap-vpn-ecs)
     - Private microservices discoverable by Cloud Map.
     - Public access only with VPN client.
+    - [IMPORTANT] Read [[this]](architectures/cloudmap-vpn-ecs/README.md) to set up your vpn properly.
 
 ## How to deploy?
 ```bash
