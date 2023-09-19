@@ -17,14 +17,17 @@ The repository to deploy chromadb via terraform into aws cloud infrastructure, u
     - Modeified from the youtube video [Deploy a PRIVATE Chroma Vector DB to AWS | Step by step tutorial | Part 2](https://www.youtube.com/watch?v=rD3G3hbAawE&t=27s)
     - Additional cloudwatch to view api gateway deployment.
     - Additional public ec2 to view docker logs within private ec2.
+    - WARNING: Can take 10 mins to deploy due to VPC Link !!!
 4. (RECOMMENDED) Private ecs fargate with Network Load Balancer, EFS and API Gateway [[code]](architectures/apigw-nlb-ecs)
     - Fargate to manage docker containers.
     - Elastic File System for persistent volume of docker.
     - Cloudwatch Logs to store api gateway deployment messages and docker logs.
+    - WARNING: Can take 10 mins to deploy due to VPC Link !!!
 5. (RECOMMENDED) Private ecs fargate with EFS, Cloud Map and VPN Endpoint. [[code]](architectures/cloudmap-vpn-ecs)
     - Private microservices discoverable by Cloud Map.
     - Public access only with VPN client.
     - [IMPORTANT] Read [[this]](architectures/cloudmap-vpn-ecs/README.md) to set up your vpn properly.
+    - WARNING: Can take 10 mins to deploy due to VPN Networking !!!
 
 ## How to deploy?
 ```bash
