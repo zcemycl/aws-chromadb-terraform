@@ -92,7 +92,7 @@ resource "aws_ecs_service" "chroma_ecs_service" {
   scheduling_strategy                = "REPLICA"
 
   network_configuration {
-    security_groups = [module.security_groups.chroma_sg_id]
+    security_groups = [module.security_groups.security_groups["chroma"].id]
     subnets         = module.chroma_network.subnet_ids
   }
 
