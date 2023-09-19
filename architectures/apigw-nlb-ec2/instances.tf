@@ -57,7 +57,7 @@ resource "aws_instance" "chroma_instance" {
   availability_zone = var.aws_az
   instance_type     = var.instance_type
   vpc_security_group_ids = [
-    module.security_groups.chroma_instance_sg_id
+    module.security_groups.security_groups["ec2-chroma"].id
   ]
   key_name = aws_key_pair.ssh_key.id
 
@@ -86,7 +86,7 @@ resource "aws_instance" "backdoor_instance" {
   instance_type     = "t2.micro"
   subnet_id         = module.public_subnet_network.subnet_ids[0]
   vpc_security_group_ids = [
-    module.security_groups.backdoor_instance_sg_id
+    module.security_groups.security_groups["ec2-backdoor"].id
   ]
   key_name                    = aws_key_pair.ssh_key.id
   associate_public_ip_address = true
