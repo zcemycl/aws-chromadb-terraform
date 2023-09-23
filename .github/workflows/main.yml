@@ -10,6 +10,9 @@ on:
 
 jobs:
   lint:
+    strategy:
+      matrix:
+        path: [architecture/apigw-nlb-ec2]
     runs-on: ubuntu-latest
     steps:
      - name: Checkout the repository to the runner
@@ -21,13 +24,16 @@ jobs:
          terraform_version: 1.3.0
 
      - name: Terraform init
+       working-directory: ${{ matrix.path }}
        id: init
        run: terraform init
 
      - name: Terraform format
+       working-directory: ${{ matrix.path }}
        id: fmt
        run: terraform fmt -check
 
      - name: Terraform validate
+       working-directory: ${{ matrix.path }}
        id: validate
        run: terraform validate
