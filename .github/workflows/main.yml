@@ -12,7 +12,7 @@ jobs:
   lint:
     strategy:
       matrix:
-        path: [architecture/apigw-nlb-ec2]
+        path: [architectures/apigw-nlb-ec2]
     runs-on: ubuntu-latest
     steps:
      - name: Checkout the repository to the runner
